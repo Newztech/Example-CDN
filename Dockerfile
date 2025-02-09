@@ -1,5 +1,5 @@
 # ---- Build Stage ----
-    FROM node:23.7-alpine3.20  AS builder
+    FROM node:20-alpine3.18 AS builder
 
     # Set working directory
     WORKDIR /app
@@ -17,16 +17,21 @@
     RUN npm run build
     
     # ---- Production Stage ----
-    FROM node:23.7-alpine3.20  AS production
+    FROM node:20-alpine3.18 AS production
     
     # Add curl for healthcheck
-    RUN apk add --no-cache curl
+    RUN apk update && \
+        apk add --no-cache curl
     
     # Add non-root user for security
     RUN addgroup -S appgroup && adduser -S appuser -G appgroup
     
     # Set working directory
     WORKDIR /app
+    
+    # Create data directory for persistent storage
+    RUN mkdir -p /app/data && \
+        chown -R appuser:appgroup /app/data
     
     # Copy package files
     COPY package*.json ./
