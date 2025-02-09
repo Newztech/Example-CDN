@@ -1,7 +1,8 @@
-version: '3.8'
 services:
   app:
-    image: ghcr.io/newztech/web-bunny:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     healthcheck:
@@ -11,7 +12,7 @@ services:
       retries: 3
     restart: unless-stopped
     volumes:
-      - app_data:/app/data   # Adding volume for persistent data
+      - app_data:/app/data
 
 volumes:
-  app_data:    # Defining the volume
+  app_data:
