@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Glegoo:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --custom-width: 100vw;
+  --design-width: 1920;
+  --ratio: calc(var(--custom-width) / var(--design-width));
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.gradient-pink {
+  background: linear-gradient(
+    90deg,
+    #f53fa100 0%,
+    #f53fa199 9%,
+    #f53fa1d6 16%,
+    #f53fa136 24%,
+    #f53fa1b2 33%,
+    #f53fa1f0 38%,
+    #f53fa124 40%,
+    #f53fa1e0 50%,
+    #f53fa138 60%,
+    #f53fa194 69%,
+    #f53fa159 75%,
+    #f53fa1a6 78%,
+    #f53fa16b 84%,
+    #f53fa1bd 92%,
+    #f53fa100 100%
+  );
+}
+
+.hero-title {
+  font-family: 'Glegoo', serif;
+  font-size: calc(92 * var(--ratio));
+  letter-spacing: calc(-1.84 * var(--ratio));
+  line-height: calc(110 * var(--ratio));
+  font-weight: 700;
+}
+
+.nav-link {
+  font-family: 'Manrope', sans-serif;
+  font-size: calc(18 * var(--ratio));
+  line-height: calc(18 * var(--ratio));
+  font-weight: 400;
+}
+
+.feature-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: calc(18 * var(--ratio));
+  letter-spacing: calc(-0.36 * var(--ratio));
+  line-height: calc(18 * var(--ratio));
+  font-weight: 500;
+}
+
+.tag-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: calc(24 * var(--ratio));
+  line-height: calc(24 * var(--ratio));
+  font-weight: 600;
+}
+
+.button-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: calc(24 * var(--ratio));
+  letter-spacing: calc(1.44 * var(--ratio));
+  line-height: calc(24 * var(--ratio));
+  font-weight: 700;
+}
