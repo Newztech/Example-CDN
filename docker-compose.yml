@@ -10,3 +10,8 @@ services:
       timeout: 3s
       retries: 3
     restart: unless-stopped
+    volumes:
+      - app_data:/app/data   # Adding volume for persistent data
+
+volumes:
+  app_data:    # Defining the volume
