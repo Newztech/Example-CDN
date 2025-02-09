@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    image: docker pull ghcr.io/newztech/web-bunny:latest
+    image: ghcr.io/newztech/web-bunny:latest
     ports:
       - "3000:3000"
     healthcheck:
