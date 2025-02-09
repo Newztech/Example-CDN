@@ -8,6 +8,7 @@
 :root {
   --custom-width: 100vw;
   --design-width: 1920;
+  --design-height: 100%;
   --ratio: calc(var(--custom-width) / var(--design-width));
 }
 

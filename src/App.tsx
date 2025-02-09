@@ -17,6 +17,8 @@ const FeatureCard = ({ icon: Icon, title }: { icon: React.ElementType; title: st
 );
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
     <div className="min-h-screen bg-[#0f151a] text-white relative overflow-hidden">
       {/* Background Effects */}
@@ -27,33 +29,62 @@ function App() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         {/* Navigation */}
-        <nav className="flex justify-between py-6">
-          <div className="flex gap-8">
-            <NavLink>Join the team</NavLink>
-            <NavLink>Contact us</NavLink>
+        <nav className="py-6">
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden flex justify-end">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white p-2"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
-          <div className="flex gap-8">
-            <NavLink>Previous Campaign</NavLink>
-            <NavLink>All Games List</NavLink>
+
+          {/* Mobile Menu */}
+          <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} mt-4`}>
+            <div className="flex flex-col space-y-4">
+              <NavLink>Join the team</NavLink>
+              <NavLink>Contact us</NavLink>
+              <NavLink>Previous Campaign</NavLink>
+              <NavLink>All Games List</NavLink>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex justify-between">
+            <div className="flex gap-8">
+              <NavLink>Join the team</NavLink>
+              <NavLink>Contact us</NavLink>
+            </div>
+            <div className="flex gap-8">
+              <NavLink>Previous Campaign</NavLink>
+              <NavLink>All Games List</NavLink>
+            </div>
           </div>
         </nav>
 
         {/* Hero Section */}
-        <div className="mt-24 flex justify-between items-center">
-          <div className="max-w-xl">
+        <div className="mt-12 lg:mt-24 flex flex-col lg:flex-row justify-between items-center  -inset-y-8">
+          <div className="max-w-xl w-full lg:w-1/2 -inset-y-8">
             <div className="inline-block px-4 py-2 bg-[#f53fa10d] rounded-xl mb-6">
-              <span className="tag-text text-[#f53fa1]">faster website</span>
+              <span className="tag-text text-[#d87330]">faster website</span>
             </div>
-            
-            <h1 className="hero-title mb-8">
+
+            <h1 className="hero-title mb-8 text-3xl lg:text-4xl xl:text-5xl font-bold">
               Have you ever tried Bunny?
             </h1>
 
             {/* Feature Grid */}
-            <div className="bg-[#f53fa10d] backdrop-blur-sm rounded-3xl p-8">
-              <div className="grid grid-cols-2 gap-8">
+            <div className="bg-[#f53fa10d] backdrop-blur-sm rounded-3xl p-4 lg:p-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-8">
                 <FeatureCard icon={Database} title="Storage" />
                 <FeatureCard icon={Globe} title="Bunny DNS" />
                 <FeatureCard icon={CloudLightning} title="CDN" />
@@ -61,19 +92,22 @@ function App() {
               </div>
             </div>
 
-            <button className="mt-12 px-8 py-4 bg-[#d87330] text-white rounded-full hover:bg-[#c56628] transition-colors">
-              <span className="button-text">Try this example</span>
-            </button>
-            
-            <span className="ml-4 button-text text-[#d87330]">More faster</span>
+            <div className="mt-8 lg:mt-12 flex flex-col sm:flex-row items-center gap-4">
+              <button className="w-full sm:w-auto px-8 py-4 bg-[#d87330] text-white rounded-full hover:bg-[#c56628] transition-colors">
+                <span className="button-text">Try this example</span>
+              </button>
+
+              <span className="button-text text-[#d87330]">More faster</span>
+            </div>
           </div>
 
           {/* Hero Image */}
-          <div className="relative w-[600px] h-[700px]">
-            <img
-              src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&q=80"
-              alt="3D Abstract Visualization"
-              className="absolute inset-0 w-full h-full object-cover rounded-bl-[140px]"
+          <div className="relative w-full lg:w-[832px] h-[400px] lg:h-[1248px] mt-8 lg:mt-0 mx-auto bg-cover">
+            <div
+              className="absolute inset-0 bg-center bg-no-repeat bg-cover mix-blend-color-dodge rounded-b-[200px]"
+              style={{
+                backgroundImage: "url(https://bunny-cdn.luam.tech/bunny/bunny.webp)"
+              }}
             />
           </div>
         </div>
