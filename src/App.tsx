@@ -102,7 +102,7 @@ function App() {
           </div>
 
           {/* Hero Image */}
-          <div className="relative w-full lg:w-[832px] h-[400px] lg:h-[1248px] mt-8 lg:mt-0 mx-auto bg-cover">
+          <div className="relative w-full lg:w-[832px] max-w-7xl h-[650px] mt-8 lg:mt-0 mx-auto bg-cover">
             <div
               className="absolute inset-0 bg-center bg-no-repeat bg-cover mix-blend-color-dodge rounded-b-[200px]"
               style={{
@@ -111,6 +111,7 @@ function App() {
             />
           </div>
         </div>
+
       </div>
     </div>
   );
